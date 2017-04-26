@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Destination</title>
+  </head>
+  <body>
+    <a href='/logout'>Logout</a>
+    <a href='/success'>Home</a>
+    {% for destination in destination_info %}
+    <h2>{{destination.destination}}</h2>
+    <p>Planned by: {{destination.user_id.first_name}} {{destination.user_id.last_name}}</p>
+    <p>Description: {{destination.plan}}</p>
+    <p>Travel Date From: {{destination.startdate}}</p>
+    <p>Travel Date To: {{destination.enddate}}</p>
+
+    <h2>Other Users Joining the Trip:</h2>
+    {{other_users}}
+    {% for user in destination.trips.all %}
+    <p> {{user.first_name}} {{user.last_name}}</p>
+    {% endfor %}
+    {% endfor %}
+  </body>
+</html>
